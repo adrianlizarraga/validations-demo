@@ -122,6 +122,11 @@
 * Ember CP Validations Demo/Tutorial
 ** Basic Usage
 
+Install `ember-cp-validations` by running:
+```bash
+ember install ember-cp-validations
+```
+
 Assume you'd like to validate the properties in the following controller.
 
 #+NAME: Basic controller
@@ -129,7 +134,7 @@ Assume you'd like to validate the properties in the following controller.
   /**
      The controller for the basic usage page.
   ,*/
-  export default Ember.Controller.extend(ValidationsMixin, {
+  export default Ember.Controller.extend({
 
       /**
          The title.
