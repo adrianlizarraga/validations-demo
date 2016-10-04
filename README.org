@@ -200,3 +200,7 @@ The ember-cp-validations addon enables developers to specify an Ember Mixin that
       enableCodeLengthValidator: true,
   });
 #+END_SRC
+
+The ~buildValidations()~ function returns a mixin that should be implemented by the controller, component, object, or model whose properties will be validated.
+The argument provided to ~buildValidations()~ is an object whose keys correspond to the properties that will be validated and the values consist of one or more validators
+that determine the validity of that property.
