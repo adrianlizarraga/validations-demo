@@ -1,0 +1,118 @@
+* Form validation
+** Criteria
+1. Can create custom validators
+2. Can validate property dependencies (e.g., begin and end dates)
+3. Can validate nested properties (e.g., validate zybook.zybook_code)
+4. Can validate array elements (e.g., validate each element in zybooks array)
+5. Works with ember objects, controllers, components
+6. Comes with useful built-in validators (e.g., string length, numeric relationships, dates)
+7. Testable
+8. Actively developed
+9. Non-intrusive (Shouldn't have to modify our models if possible)
+10. Easy to run validations and get errors (Happens as you type)
+** Validators
+*** ember-cp-validations
+ 1. Can create custom validators
+    - Score: 5
+    - Provides ember generator
+    - Validator function has access to value, key, model context, and options/args
+ 2. Can validate property dependencies (e.g., begin and end dates)
+    - Score: 5
+    - Built-in validators can support dependencies
+      - Options can be computed properties with access to model context
+ 3. Can validate nested properties (e.g., validate zybook.zybook_code)
+    - Score: 5
+    - It just works
+ 4. Can validate array elements (e.g., validate each element in zybooks array)
+    - Score: 4
+    - The built-in belongs-to validator only works with DS.Model objects
+    - Requires a custom validator to work with Ember.Objects (I've written)
+ 5. Works with ember objects, controllers, components
+    - Score: 5
+    - Validators are a mixin that can work with all Ember objects
+ 6. Comes with useful built-in validators (e.g., string length, numeric relationships, dates)
+    - Score: 4
+    - Library is not extensive
+ 7. Testable
+    - Score: 5
+    - Ember generator creates template for unit test
+    - It just works
+ 8. Actively developed
+    - Score: 5
+    - Most active
+ 9. Non-intrusive (Shouldn't have to modify our models if possible)
+    - Score: 4
+    - Only have to modify top-level component/controller
+*** ember-changeset-validations
+ 1. Can create custom validators
+    - Score: 3
+    - Provides ember generator
+    - Validator function has access to value (new/old), key, and options/args
+      - No access to model context
+ 2. Can validate property dependencies (e.g., begin and end dates)
+    - Score: 0
+    - Can't
+ 3. Can validate nested properties (e.g., validate zybook.zybook_code)
+    - Score: 0
+    - Nope
+ 4. Can validate array elements (e.g., validate each element in zybooks array)
+    - Score: ?
+    - Unknown but doesn't seem likely
+ 5. Works with ember objects, controllers, components
+    - Score: 5
+    - Validators are grouped into a POJO property on a controller/component/model
+ 6. Comes with useful built-in validators (e.g., string length, numeric relationships, dates)
+    - Score: 3
+    - Library is not extensive
+      - missing date validation
+ 7. Testable
+    - Score: 5
+    - Ember generator creates template for unit test
+    - Testing POJO
+    - It just works
+ 8. Actively developed
+    - Score: 5
+    - Moderately active
+ 9. Non-intrusive (Shouldn't have to modify our models if possible)
+    - Score: 2
+    - Meant to function with an ember model as opposed to stand-alone controller properties.
+      - Can work with controller properties if write a wrapper model... it gets complicated
+*** ember-validations
+ 1. Can create custom validators
+    - Score: 3
+    - No ember generator
+    - Have to override init and write extra code to support dependencies
+ 2. Can validate property dependencies (e.g., begin and end dates)
+    - Score: 3
+    - Only for custom
+ 3. Can validate nested properties (e.g., validate zybook.zybook_code)
+    - Score: 5
+    - works
+ 4. Can validate array elements (e.g., validate each element in zybooks array)
+    - Score: ?
+    - Unknown but doesn't seem likely
+ 5. Works with ember objects, controllers, components
+    - Score: 5
+    - Requires a mixin and a property names "validators"
+ 6. Comes with useful built-in validators (e.g., string length, numeric relationships, dates)
+    - Score: 4
+    - Library is not extensive
+ 7. Testable
+    - Score: 3
+    - No built-in support for testing custom validators
+    - Testing controllers that implement the mixin requires "needs" statements
+ 8. Actively developed
+    - Score: 1
+    - Maintained but not actively developed
+ 9. Non-intrusive (Shouldn't have to modify our models if possible)
+    - Score: 3
+    - Controller/component must implement a mixin and must have a "validator" property
+ 10. Easy to run validations
+    - Score: 3
+    - Observers.. may have to call validate() to run all validations
+*** ember-cli-simple-validation
+- Extremely intrusive (model properties must have a specific suffix; controller must have a specific method)
+- May only support DS.Model
+*** ember-model-validator
+- DS.Model
+- Mixin with required property names
