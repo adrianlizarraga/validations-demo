@@ -1,0 +1,25 @@
+<div class='form'>
+    <label for='begin-date-input'>Begin date</label>
+    {{input id='begin-date-input' type='date' value=beginDate}}
+    {{#if this.validations.attrs.beginDate.error}}
+        <div class='red-text'>{{this.validations.attrs.beginDate.message}}</div>
+    {{/if}}
+
+    <label for='end-date-input'>End date</label>
+    {{input id='end-date-input' type='date' value=endDate}}
+    {{#if (v-get this 'endDate' 'error')}}
+        <div class='red-text'>{{v-get this 'endDate' 'message'}}</div>
+    {{/if}}
+
+    <label for='user-name-input'>User name</label>
+    {{input id='user-name-input' type='text' value=user.name}}
+    {{#if (v-get this 'user.name' 'error')}}
+        <div class='red-text'>{{v-get this 'user.name' 'message'}}</div>
+    {{/if}}
+
+    <label for='user-id-input'>User ID</label>
+    {{input id='user-id-input' type='number' value=user.id}}
+    {{#if (v-get this 'user.id' 'error')}}
+        <div class='red-text'>{{v-get this 'user.id' 'message'}}</div>
+    {{/if}}
+</div>

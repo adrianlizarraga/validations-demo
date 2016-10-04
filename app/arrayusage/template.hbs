@@ -1,0 +1,14 @@
+<div class='form'>
+    {{#each emailDomains as |domain|}}
+        <label>Domain:</label>
+        {{input type='text' value=domain.domainValue}}
+        {{#unless domain.validations.isValid}}
+            <div class='red-text'>{{domain.validations.message}}</div>
+        {{/unless}}
+    {{/each}}
+
+    <label> Overall error:</label>
+    {{#unless this.validations.attrs.emailDomains.isValid}}
+        <div class='red-text'>{{this.validations.attrs.emailDomains.message}}</div>
+    {{/unless}}
+</div>
