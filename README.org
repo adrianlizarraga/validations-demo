@@ -1,11 +1,12 @@
 * Form validation
 ** Criteria
-1. Can create custom validators
-2. Can validate property dependencies (e.g., begin and end dates)
-3. Can validate nested properties (e.g., validate zybook.zybook_code)
-4. Can validate array elements (e.g., validate each element in zybooks array)
-5. Works with ember objects, controllers, components
-6. Comes with useful built-in validators (e.g., string length, numeric relationships, dates)
+0. Not dependent on any specify UI component library
+1. Comes with useful built-in validators (e.g., string length, numeric relationships, dates)
+2. Can create custom validators
+3. Can validate property dependencies (e.g., begin and end dates)
+4. Can validate nested properties (e.g., validate zybook.zybook_code)
+5. Can validate array elements (e.g., validate each element in zybooks array)
+6. Works with ember objects, controllers, components
 7. Testable
 8. Actively developed
 9. Non-intrusive (Shouldn't have to modify our models if possible)
@@ -116,3 +117,30 @@
 *** ember-model-validator
 - DS.Model
 - Mixin with required property names
+
+
+* Ember CP Validations Demo/Tutorial
+** Basic Usage
+
+Assume you'd like to validate the properties in the following controller.
+
+#+NAME: Basic controller
+#+BEGIN_SRC javascript
+  /**
+     The controller for the basic usage page.
+  ,*/
+  export default Ember.Controller.extend(ValidationsMixin, {
+
+      /**
+         The title.
+      ,*/
+      title: null,
+
+      /**
+         The code.
+      ,*/
+      code: null,
+  });
+#+END_SRC
+
+The ember-cp-validations addon
