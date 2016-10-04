@@ -1,14 +1,14 @@
 <div class='form'>
     <label for='title-input'>Title</label>
     {{input id='title-input' type='text' value=title}}
-    {{#if this.validations.attrs.title.error}}
+    {{#if this.validations.attrs.title.isInvalid}}
         <div class='red-text'>{{this.validations.attrs.title.message}}</div>
     {{/if}}
 
     <label for='code-input'>Code</label>
     {{input id='code-input' type='text' value=code}}
-    {{#if (v-get this 'code' 'error')}}
+    {{#unless (v-get this 'code' isValid)}}
         <div class='red-text'>{{v-get this 'code' 'message'}}</div>
-    {{/if}}
+    {{/unless}}
     {{input type='checkbox' checked=enableCodeLengthValidator}}
 </div>

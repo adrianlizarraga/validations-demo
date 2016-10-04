@@ -18,7 +18,6 @@ const ValidationsMixin = buildValidations({
         validator('length', {
             min: 4,
             max: 8,
-            message: 'Not long enough',
             disabled: Ember.computed.not('model.enableCodeLengthValidator'),
         }),
     ],
