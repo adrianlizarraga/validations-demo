@@ -203,4 +203,30 @@ The ember-cp-validations addon enables developers to specify an Ember Mixin that
 
 The ~buildValidations()~ function returns a mixin that should be implemented by the controller, component, object, or model whose properties will be validated.
 The argument provided to ~buildValidations()~ is an object whose keys correspond to the properties that will be validated and the values consist of one or more validators
-that determine the validity of that property.
+that determine the validity of that property. Ex: The ~title~ property uses the ~presence~ validator to ensure the title is invalid when blank, and the ~code~ property uses
+the ~presence~ and ~length~ validators to ensure the code is only valid when not empty and the length is between 4 and 8 characters.
+
+The ~validator()~ function returns a validator object. The first argument specifies the validator's identity (e.g., ~presence~) and the second argument specifies
+configurable options for that validator. Ex: The ~length~ validator is configured with minimum/maximum length requirements, an error message of "Not long enough", and
+a computed property that disables the validator when the ~enableCodeLengthValidator~ property in the controller is false. Note that any option can be set to a computed
+property sensitive to any property in the controller.
+
+The following template shows how to display an error message when one of the properties is invalid.
+
+#+NAME: Template for basic validated controller
+#+BEGIN_SRC hbs
+  <div class='form'>
+      <label for='title-input'>Title</label>
+      {{input id='title-input' type='text' value=title}}
+      {{#if this.validations.attrs.title.error}}
+          <div class='red-text'>{{this.validations.attrs.title.message}}</div>
+      {{/if}}
+
+      <label for='code-input'>Code</label>
+      {{input id='code-input' type='text' value=code}}
+      {{#if (v-get this 'code' 'error')}}
+          <div class='red-text'>{{v-get this 'code' 'message'}}</div>
+      {{/if}}
+      {{input type='checkbox' checked=enableCodeLengthValidator}}
+  </div>
+#+END_SRC
